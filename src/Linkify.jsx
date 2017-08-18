@@ -64,7 +64,7 @@ class Linkify extends React.Component {
       if (this.isImage(match.url)) {
         image = React.createElement(
           'img',
-          {src: match.url}
+          {src: match.url, key: `parse${this.parseCounter}match${idx}image`}
         )
       }
       elements.push(React.createElement(

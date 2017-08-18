@@ -94,7 +94,7 @@ var Linkify = function (_React$Component) {
           props[key] = val;
         }
         if (_this2.isImage(match.url)) {
-          image = _react2.default.createElement('img', { src: match.url });
+          image = _react2.default.createElement('img', { src: match.url, key: 'parse' + _this2.parseCounter + 'match' + idx + 'image' });
         }
         elements.push(_react2.default.createElement(_this2.props.component, props, match.text));
         lastIndex = match.lastIndex;
