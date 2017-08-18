@@ -29,6 +29,10 @@ class Linkify extends React.Component {
     return linkify.match(string);
   }
 
+  isImage(url) {
+    return (url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+  }
+
   parseString(string) {
     let elements = [];
     if (string === '') {
@@ -41,6 +45,7 @@ class Linkify extends React.Component {
     }
 
     let lastIndex = 0;
+    let image;
     matches.forEach((match, idx) => {
       // Push the preceding text if there is any
       if (match.index > lastIndex) {
@@ -56,6 +61,12 @@ class Linkify extends React.Component {
 
         props[key] = val;
       }
+      if (this.isImage(match.url)) {
+        image = React.createElement(
+          'img',
+          {src: match.url}
+        )
+      }
       elements.push(React.createElement(
         this.props.component,
         props,
@@ -66,6 +77,11 @@ class Linkify extends React.Component {
 
     if (lastIndex < string.length) {
       elements.push(string.substring(lastIndex));
+    }
+
+    if (image) {
+      elements.push(React.createElement('br'));
+      elements.push(image);
     }
 
     return (elements.length === 1) ? elements[0] : elements;
