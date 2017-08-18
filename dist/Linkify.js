@@ -105,7 +105,7 @@ var Linkify = function (_React$Component) {
       }
 
       if (image) {
-        elements.push(_react2.default.createElement('br'));
+        elements.push(_react2.default.createElement('br', { key: 'image-br' }));
         elements.push(image);
       }
 

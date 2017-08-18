@@ -80,7 +80,7 @@ class Linkify extends React.Component {
     }
 
     if (image) {
-      elements.push(React.createElement('br'));
+      elements.push(React.createElement('br', {key: 'image-br'}));
       elements.push(image);
     }
 
